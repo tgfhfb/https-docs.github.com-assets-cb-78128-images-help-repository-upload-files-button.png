@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 🔥 أهم tags لتحسين الظهور في جوجل -->
+    <title>برنامج تحويل الملفات بصيغ مختلفة - تحويل PDF إلى Word مجاناً | أداة عربية</title>
+    <meta name="description" content="برنامج تحويل الملفات بصيغ مختلفة - أداة عربية مجانية 100% لتحويل PDF إلى Word، الصور إلى PDF، النص إلى PDF والعكس. سهل الاستخدام وآمن.">
+    <meta name="keywords" content="برنامج تحويل الملفات, تحويل PDF, PDF إلى Word, نص إلى PDF, صورة إلى PDF, محول ملفات, تحويل ملفات, عربي, مجاني, أونلاين">
+    <meta name="author" content="برنامج تحويل الملفات بصيغ مختلفة">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="برنامج تحويل الملفات بصيغ مختلفة - تحويل PDF إلى Word مجاناً">
+    <meta property="og:description" content="أداة عربية مجانية لتحويل الملفات بين الصيغ المختلفة بدون برامج، سريعة وآمنة">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_SA">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="برنامج تحويل الملفات بصيغ مختلفة - تحويل PDF إلى Word">
+    <meta name="twitter:description" content="أداة عربية مجانية لتحويل الملفات بين الصيغ المختلفة">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://pdf-converter-arabic.github.io/convert-pdf-to-word">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+    
+    <!-- Structured Data for Google -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "برنامج تحويل الملفات بصيغ مختلفة",
+        "description": "أداة مجانية لتحويل الملفات بين الصيغ المختلفة - تحويل PDF إلى Word، النص إلى PDF، الصور إلى PDF",
+        "url": "https://pdf-converter-arabic.github.io/convert-pdf-to-word",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "برنامج تحويل الملفات بصيغ مختلفة"
+        },
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Researchers, Students, Professionals"
+        }
+    }
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --success-color: #2ecc71;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600"><rect width="1200" height="600" fill="%232c3e50"/><circle cx="200" cy="150" r="80" fill="%233498db" opacity="0.1"/><circle cx="1000" cy="450" r="120" fill="%23e74c3c" opacity="0.1"/><circle cx="800" cy="200" r="60" fill="%232ecc71" opacity="0.1"/></svg>') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .converter-section {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .upload-area {
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            padding: 50px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background-color: #f8f9fa;
+        }
+        
+        .upload-area:hover, .upload-area.dragover {
+            border-color: var(--primary-color);
+            background-color: #e3f2fd;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), #5dade2);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+            background: linear-gradient(135deg, #2980b9, var(--primary-color));
+        }
+        
+        .btn-telegram {
+            background: linear-gradient(135deg, #0088cc, #00aced);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-telegram:hover {
+            background: linear-gradient(135deg, #0077b5, #0088cc);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .premium-badge {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #333;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(255, 165, 0, 0.3);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), #5dade2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 1.8rem;
+        }
+        
+        .breadcrumb {
+            background-color: transparent;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb-item.active {
+            color: var(--primary-color);
+        }
+        
+        .faq-section {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            padding: 40px;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, var(--primary-color), #5dade2);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 80px 0;
+            }
+            
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .converter-section {
+                padding: 25px;
+                margin-top: -50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Schema.org Structured Data -->
+    <div itemscope itemtype="https://schema.org/WebApplication" style="display:none;">
+        <span itemprop="name">برنامج تحويل الملفات بصيغ مختلفة</span>
+        <span itemprop="description">أداة عربية مجانية لتحويل PDF إلى Word والنص إلى PDF والصورة إلى PDF</span>
+        <span itemprop="applicationCategory">UtilityApplication</span>
+        <span itemprop="operatingSystem">Any</span>
+        <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+            <span itemprop="price">0</span>
+            <span itemprop="priceCurrency">USD</span>
+        </div>
+    </div>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-exchange-alt me-2"></i>
+                برنامج تحويل الملفات
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#converter">المحول</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">المميزات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">اتصل بنا</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="https://t.me/ali077361092" class="btn btn-telegram me-2" target="_blank">
+                        <i class="fab fa-telegram me-2"></i>
+                        تواصل على التلكرام
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- قسم البطل -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">برنامج تحويل الملفات بصيغ مختلفة</h1>
+            <p class="lead mb-4">أداة عربية مجانية 100% لتحويل الملفات بين الصيغ المختلفة. حول PDF إلى Word، النص إلى PDF، الصور إلى PDF والعكس. سهل الاستخدام ولا يحتاج تسجيل.</p>
+            <button class="btn btn-light btn-lg px-5 py-3" id="startConverting">
+                <i class="fas fa-bolt me-2"></i>
+                ابدأ التحويل مجاناً
+            </button>
+        </div>
+    </section>
+
+    <!-- قسم المحول -->
+    <section class="container converter-section" id="converter">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#home">الرئيسية</a></li>
+                <li class="breadcrumb-item active">محول الملفات</li>
+            </ol>
+        </nav>
+
+        <h1 class="section-title">برنامج تحويل الملفات - تحويل بين جميع الصيغ مجاناً</h1>
+        
+        <div class="progress-bar">
+            <div class="progress" id="conversionProgress"></div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt fa-4x mb-3 text-muted"></i>
+                    <h4>اسحب وأفلت ملفاتك هنا</h4>
+                    <p class="text-muted mb-3">أو انقر لاختيار الملفات من جهازك</p>
+                    <button class="btn btn-outline-primary">
+                        <i class="fas fa-folder-open me-2"></i>
+                        اختيار الملفات
+                    </button>
+                    <input type="file" id="fileInput" class="d-none" multiple>
+                </div>
+                <div id="filePreview" class="mt-3"></div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="conversion-options">
+                    <h5 class="mb-3">اختر نوع التحويل</h5>
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <div class="option-card active" data-convert="text-to-pdf">
+                                <i class="fas fa-file-alt"></i>
+                                <h6>نص إلى PDF</h6>
+                                <small class="text-muted">تحويل المستندات النصية</small>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="option-card" data-convert="image-to-pdf">
+                                <i class="fas fa-file-image"></i>
+                                <h6>صورة إلى PDF</h6>
+                                <small class="text-muted">تحويل الصور إلى PDF</small>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="option-card" data-convert="pdf-to-text">
+                                <i class="fas fa-file-pdf"></i>
+                                <h6>PDF إلى نص</h6>
+                                <small class="text-muted">استخراج النص من PDF</small>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="option-card" data-convert="pdf-to-word">
+                                <i class="fas fa-file-word"></i>
+                                <h6>PDF إلى Word</h6>
+                                <small class="text-muted">تحويل PDF إلى مستند Word</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <button class="btn btn-primary w-100 py-3" id="convertBtn">
+                            <i class="fas fa-sync-alt me-2"></i>
+                            تحويل الملف
+                        </button>
+                    </div>
+                    
+                    <div class="mt-3 text-center">
+                        <span class="premium-badge">
+                            <i class="fas fa-crown me-1"></i>
+                            خدمة مجانية 100%
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="conversion-result" id="conversionResult">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">تم تحويل الملف بنجاح!</h5>
+                <button class="btn btn-success" id="downloadBtn">
+                    <i class="fas fa-download me-2"></i>
+                    تحميل الملف
+                </button>
+            </div>
+            <div class="file-info mt-3">
+                <p class="mb-1" id="resultFileName">اسم الملف: document.pdf</p>
+                <p class="mb-1" id="resultFileSize">الحجم: 1.2 MB</p>
+                <p class="mb-0" id="resultFileType">النوع: PDF</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المميزات -->
+    <section id="features" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">لماذا تختار برنامج تحويل الملفات بصيغ مختلفة؟</h2>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h5 class="card-title">تحويل سريع</h5>
+                            <p class="card-text">نظام تحويل سريع لا يستغرق أكثر من ثوانٍ معدودة. حول ملفاتك بسرعة فائقة دون انتظار.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h5 class="card-title">آمن ومحمي</h5>
+                            <p class="card-text">ملفاتك في أمان تام. لا نقوم بتخزين ملفاتك على خوادمنا بعد الانتهاء من التحويل.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h5 class="card-title">يعمل على جميع الأجهزة</h5>
+                            <p class="card-text">واجهة متجاوبة تعمل بشكل ممتاز على الهواتف الذكية، الأجهزة اللوحية وأجهزة الكمبيوتر.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h5 class="card-title">دعم فني مباشر</h5>
+                            <p class="card-text">دعم فني متاح عبر التلكرام على الرقم: 009647802141559 للإجابة على استفساراتك.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <h5 class="card-title">واجهة عربية</h5>
+                            <p class="card-text">واجهة مستخدم عربية سلسة وسهلة الاستخدام تناسب جميع المستخدمين العرب.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <h5 class="card-title">مجاني بالكامل</h5>
+                            <p class="card-text">خدمة مجانية 100% بدون رسوم خفية أو اشتراكات. جميع الميزات متاحة مجاناً.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم اتصل بنا -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="section-title">اتصل بنا</h2>
+            
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="contact-info h-100">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>البريد الإلكتروني</h4>
+                        <p class="fs-5">ali077361092@gmail.com</p>
+                        <a href="mailto:ali077361092@gmail.com" class="btn btn-light mt-3">
+                            <i class="fas fa-paper-plane me-2"></i>
+                            إرسال بريد
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="contact-info h-100">
+                        <div class="contact-icon">
+                            <i class="fab fa-telegram"></i>
+                        </div>
+                        <h4>التلكرام</h4>
+                        <p class="fs-5">@ali077361092</p>
+                        <a href="https://t.me/ali077361092" class="btn btn-light mt-3" target="_blank">
+                            <i class="fab fa-telegram me-2"></i>
+                            تواصل مباشر
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4>رقم الواتساب/الهاتف</h4>
+                        <p class="fs-5">009647802141559</p>
+                        <a href="https://wa.me/9647802141559" class="btn btn-light mt-3" target="_blank">
+                            <i class="fab fa-whatsapp me-2"></i>
+                            تواصل عبر واتساب
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer class="py-5 text-white" style="background: linear-gradient(135deg, var(--secondary-color), #1c2833);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">
+                        <i class="fas fa-exchange-alt me-2"></i>
+                        برنامج تحويل الملفات
+                    </h5>
+                    <p class="mb-3">أداة عربية مجانية متكاملة لتحويل الملفات بين الصيغ المختلفة بسهولة وأمان.</p>
+                    <div class="social-icons">
+                        <a href="https://t.me/ali077361092" class="text-light me-3" target="_blank">
+                            <i class="fab fa-telegram fa-lg"></i>
+                        </a>
+                        <a href="mailto:ali077361092@gmail.com" class="text-light me-3">
+                            <i class="fas fa-envelope fa-lg"></i>
+                        </a>
+                        <a href="https://wa.me/9647802141559" class="text-light" target="_blank">
+                            <i class="fab fa-whatsapp fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-3">التحويلات</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">PDF إلى Word</li>
+                        <li class="mb-2">نص إلى PDF</li>
+                        <li class="mb-2">صورة إلى PDF</li>
+                        <li class="mb-2">PDF إلى نص</li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="mb-3">الدعم</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">الأسئلة الشائعة</li>
+                        <li class="mb-2">اتصل بنا</li>
+                        <li class="mb-2">شروط الخدمة</li>
+                        <li class="mb-2">سياسة الخصوصية</li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="mb-3">معلومات الاتصال</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> ali077361092@gmail.com</li>
+                        <li class="mb-2"><i class="fab fa-telegram me-2"></i> @ali077361092</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i> 009647802141559</li>
+                        <li class="mb-2"><i class="fas fa-globe me-2"></i> العراق</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">جميع الحقوق محفوظة &copy; 2023 برنامج تحويل الملفات بصيغ مختلفة</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-light text-decoration-none me-3">شروط الخدمة</a>
+                    <a href="#" class="text-light text-decoration-none">سياسة الخصوصية</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // تهيئة jsPDF
+        const { jsPDF } = window.jspdf;
+        
+        // عناصر DOM
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const filePreview = document.getElementById('filePreview');
+        const convertBtn = document.getElementById('convertBtn');
+        const optionCards = document.querySelectorAll('.option-card');
+        const conversionProgress = document.getElementById('conversionProgress');
+        const startConverting = document.getElementById('startConverting');
+        const conversionResult = document.getElementById('conversionResult');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const resultFileName = document.getElementById('resultFileName');
+        const resultFileSize = document.getElementById('resultFileSize');
+        const resultFileType = document.getElementById('resultFileType');
+        
+        // المتغيرات
+        let selectedFiles = [];
+        let conversionType = 'text-to-pdf';
+        
+        // إضافة مستمعي الأحداث
+        uploadArea.addEventListener('click', () => fileInput.click());
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+        
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+        
+        optionCards.forEach(card => {
+            card.addEventListener('click', () => {
+                optionCards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                conversionType = card.getAttribute('data-convert');
+            });
+        });
+        
+        convertBtn.addEventListener('click', convertFiles);
+        startConverting.addEventListener('click', () => {
+            document.querySelector('.converter-section').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        downloadBtn.addEventListener('click', () => {
+            alert('سيبدأ تحميل الملف المحول. في التطبيق الحقيقي، سيتم تنزيل الملف فعلياً.');
+        });
+        
+        // معالجة الملفات المرفوعة
+        function handleFiles(files) {
+            selectedFiles = Array.from(files);
+            filePreview.innerHTML = '';
+            conversionResult.style.display = 'none';
+            
+            if (selectedFiles.length === 0) return;
+            
+            selectedFiles.forEach(file => {
+                const fileElement = document.createElement('div');
+                fileElement.className = 'd-flex align-items-center mb-3 p-3 bg-light rounded';
+                
+                const icon = document.createElement('i');
+                icon.className = getFileIcon(file.type) + ' fa-2x';
+                icon.style.marginLeft = '15px';
+                
+                const fileInfo = document.createElement('div');
+                fileInfo.className = 'flex-grow-1';
+                fileInfo.innerHTML = `
+                    <div class="fw-bold fs-6">${file.name}</div>
+                    <small class="text-muted">${formatFileSize(file.size)} • ${getFileTypeName(file.type)}</small>
+                `;
+                
+                const removeBtn = document.createElement('button');
+                removeBtn.className = 'btn btn-sm btn-outline-danger';
+                removeBtn.innerHTML = '<i class="fas fa-times"></i>';
+                removeBtn.addEventListener('click', () => {
+                    fileElement.remove();
+                    selectedFiles = selectedFiles.filter(f => f !== file);
+                });
+                
+                fileElement.appendChild(icon);
+                fileElement.appendChild(fileInfo);
+                fileElement.appendChild(removeBtn);
+                filePreview.appendChild(fileElement);
+            });
+        }
+        
+        // الحصول على أيقونة الملف المناسبة
+        function getFileIcon(fileType) {
+            if (fileType.startsWith('image/')) return 'fas fa-file-image text-success';
+            if (fileType === 'application/pdf') return 'fas fa-file-pdf text-danger';
+            if (fileType.includes('word') || fileType.includes('document')) return 'fas fa-file-word text-primary';
+            if (fileType.includes('text') || fileType === '') return 'fas fa-file-alt text-info';
+            return 'fas fa-file text-secondary';
+        }
+        
+        // الحصول على اسم نوع الملف
+        function getFileTypeName(fileType) {
+            if (fileType.startsWith('image/')) return 'صورة';
+            if (fileType === 'application/pdf') return 'ملف PDF';
+            if (fileType.includes('word') || fileType.includes('document')) return 'مستند Word';
+            if (fileType.includes('text') || fileType === '') return 'ملف نصي';
+            return 'ملف';
+        }
+        
+        // تنسيق حجم الملف
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        // تحويل الملفات
+        function convertFiles() {
+            if (selectedFiles.length === 0) {
+                alert('يرجى اختيار ملف أولاً');
+                return;
+            }
+            
+            convertBtn.disabled = true;
+            convertBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> جاري التحويل...';
+            
+            // محاكاة تقدم التحويل
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += 5;
+                conversionProgress.style.width = `${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                    
+                    // محاكاة نجاح التحويل
+                    setTimeout(() => {
+                        // عرض نتيجة التحويل
+                        const file = selectedFiles[0];
+                        const convertedType = getConversionTypeName(conversionType);
+                        resultFileName.textContent = `اسم الملف: ${file.name.split('.')[0]}.${getFileExtension(convertedType)}`;
+                        resultFileSize.textContent = `الحجم: ${formatFileSize(file.size * 0.8)}`;
+                        resultFileType.textContent = `النوع: ${convertedType}`;
+                        conversionResult.style.display = 'block';
+                        
+                        convertBtn.disabled = false;
+                        convertBtn.innerHTML = '<i class="fas fa-sync-alt me-2"></i> تحويل الملف';
+                        conversionProgress.style.width = '0%';
+                        
+                    }, 500);
+                }
+            }, 100);
+        }
+        
+        // الحصول على اسم نوع التحويل
+        function getConversionTypeName(type) {
+            const types = {
+                'text-to-pdf': 'PDF',
+                'image-to-pdf': 'PDF',
+                'pdf-to-text': 'نص',
+                'pdf-to-word': 'Word'
+            };
+            return types[type] || 'ملف';
+        }
+        
+        // الحصول على امتداد الملف بناءً على نوع التحويل
+        function getFileExtension(type) {
+            const extensions = {
+                'PDF': 'pdf',
+                'نص': 'txt',
+                'Word': 'docx'
+            };
+            return extensions[type] || 'file';
+        }
+
+        // تنعيم التمرير للروابط الداخلية
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // تتبع النقر على روابط التواصل
+        document.querySelectorAll('a[href*="t.me"], a[href*="wa.me"], a[href*="mailto:"]').forEach(link => {
+            link.addEventListener('click', function() {
+                console.log('Contact link clicked:', this.href);
+            });
+        });
+    </script>
+</body>
+</html>
